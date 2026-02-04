@@ -1,397 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="referrer" content="origin">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#0a1428">
-    
-    <!-- SEO Meta Tags -->
-    <title>Eaglercraft | Play Minecraft Unblocked Free in Browser</title>
-    <meta name="description" content="Play Minecraft unblocked! Eaglercraft 1.8.8 & 1.12, clients & more - no ads. Unblocked Offline versions available. Start instantly!">
-    <meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, eagler, 1.8.8, 1.12.2, ggsmp, lax1dude, solenten, aerune1">
-    <meta name="author" content="aerune1 Development">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <link rel="canonical" href="https://eaglercraft.dev/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://eaglercraft.dev/">
-    <meta property="og:title" content="Play Minecraft FREE in Your Browser - No Download Required!">
-    <meta property="og:description" content="Play full Minecraft Java Edition instantly! Multiple versions available (1.8.8, 1.12), multiplayer servers, custom clients. Start in 10 seconds - 100% free! 🎮">
-    <meta property="og:image" content="https://eaglercraft.dev/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Eaglercraft">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://eaglercraft.dev/">
-    <meta name="twitter:title" content="Play Minecraft FREE in Browser - Start in 10 Seconds!">
-    <meta name="twitter:description" content="Full Minecraft Java Edition in your browser! No downloads, no installation. Multiplayer ready. Multiple versions including 1.8.8 & 1.12. 100% FREE! 🎮">
-    <meta name="twitter:image" content="https://eaglercraft.dev/twitter-image.png">
-    <meta name="twitter:image:alt" content="Eaglercraft - Play Minecraft in Browser">
-    
-    <!-- Mobile Web App -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Eaglercraft">
-    <meta name="apple-mobile-web-app-title" content="Eaglercraft">
-    
-    <!-- Structured Data - WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Eaglercraft - Free Minecraft Browser Game",
-      "alternateName": "Eaglercraft Launcher",
-      "url": "https://eaglercraft.dev/",
-      "description": "Play Minecraft Java Edition free in your browser. No downloads required. Instant access to multiple versions with multiplayer support.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://eaglercraft.dev/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Online | Private Access</title>
+
+  <!-- Styles -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #0f172a;
+      overflow: hidden;
     }
-    </script>
-    
-    <!-- Structured Data - WebApplication -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Eaglercraft",
-      "url": "https://eaglercraft.dev/",
-      "description": "Play full Minecraft Java Edition directly in your web browser with no downloads. Multiple versions, custom clients, and multiplayer servers available instantly.",
-      "applicationCategory": "GameApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "ratingCount": "15420",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "featureList": [
-        "Play Minecraft 1.8.8 and 1.12 instantly",
-        "No downloads or installation required",
-        "100% free to play",
-        "Multiplayer server support",
-        "Custom enhanced clients available",
-        "JavaScript and WebAssembly versions",
-        "Offline play available",
-        "Works on all modern browsers"
-      ],
-      "screenshot": "https://eaglercraft.dev/screenshot.png",
-      "browserRequirements": "Requires modern web browser with WebGL and JavaScript support",
-      "softwareVersion": "1.12",
-      "datePublished": "2025-01-01",
-      "inLanguage": "en-US"
+
+    /* LOGIN */
+    #login-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
     }
-    </script>
-    
-    <!-- Structured Data - VideoGame -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "Eaglercraft - Minecraft Browser Edition",
-      "description": "Free browser-based Minecraft game with multiple versions and multiplayer support",
-      "gamePlatform": ["Web Browser", "Windows", "macOS", "Linux", "Chrome OS"],
-      "applicationCategory": "Game",
-      "genre": ["Sandbox", "Survival", "Creative", "Multiplayer"],
-      "playMode": ["SinglePlayer", "MultiPlayer", "CoOp"],
-      "url": "https://eaglercraft.dev/",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "ratingCount": "15420"
-      }
+
+    .login-box {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 14px;
+      padding: 36px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      text-align: center;
     }
-    </script>
-    
-    <!-- Structured Data - FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is Eaglercraft completely free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Eaglercraft is 100% free to play. No downloads, no installation, no hidden costs. Just click and play Minecraft in your browser."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to download anything?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No downloads required! Eaglercraft runs entirely in your web browser using JavaScript and WebGL. You can start playing in seconds."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What Minecraft versions are available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Eaglercraft offers multiple versions including Minecraft 1.8.8 (recommended) and 1.12, plus custom clients with additional features."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I play multiplayer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Eaglercraft fully supports multiplayer servers. You can join servers and play with friends just like regular Minecraft."
-          }
-        }
-      ]
+
+    .login-box h1 {
+      color: #e5e7eb;
+      font-size: 22px;
+      margin-bottom: 8px;
     }
-    </script>
-    
-    <!-- Structured Data - Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "aerune1 Development",
-      "url": "https://eaglercraft.dev/",
-      "logo": "https://eaglercraft.dev/logo.png",
-      "sameAs": [
-        "https://discord.gg/WBUXMNpXyq"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "legal@eaglercraft.dev",
-        "contactType": "Customer Support"
-      }
+
+    .login-box p {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 24px;
     }
-    </script>
-    
-    <!-- Preconnect and DNS Prefetch -->
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    
-    <!-- Preload Resources -->
-    <link rel="preload" href="dist/styles.css" as="style">
-    <link rel="preload" href="dist/renderer.js" as="script" crossorigin="anonymous">
-    
-    <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="dist/styles.css">
-    <style>
-      :root{--ec-scrollbar-width:12px;--ec-scrollbar-thumb:rgba(124,58,237,0.75);--ec-scrollbar-track:rgba(10,20,40,0.03)}
-      *::-webkit-scrollbar{width:var(--ec-scrollbar-width);height:var(--ec-scrollbar-width)}
-      *::-webkit-scrollbar-thumb{background:var(--ec-scrollbar-thumb);border-radius:999px;border:3px solid transparent;background-clip:padding-box}
-      *::-webkit-scrollbar-track{background:var(--ec-scrollbar-track);border-radius:999px}
-      html,body,#root{scrollbar-width:thin;scrollbar-color:var(--ec-scrollbar-thumb) var(--ec-scrollbar-track)}
-      
-      /* Estilos para la sección de Discord con temática de programadores */
-      .discord-section {
-        background-color: #000;
-        color: #00ff00;
-        font-family: 'Courier New', monospace;
-        padding: 20px;
-        text-align: center;
-        border-top: 2px solid #333;
-        position: relative;
-      }
-      .discord-section::before {
-        content: ">";
-        position: absolute;
-        left: 10px;
-        top: 20px;
-        color: #ffff00;
-        font-size: 18px;
-      }
-      .discord-section h3 {
-        margin: 0 0 10px 0;
-        font-size: 24px;
-        text-shadow: 0 0 5px #00ff00;
-      }
-      .discord-section p {
-        margin: 10px 0;
-        font-size: 16px;
-      }
-      .discord-section a {
-        color: #00ff00;
-        text-decoration: none;
-        border: 1px solid #00ff00;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      .discord-section a:hover {
-        background-color: #00ff00;
-        color: #000;
-      }
-    </style>
-    
-    <!-- React -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" integrity="sha384-..." defer></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" integrity="sha384-..." defer></script>
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "/dist/react-shim.js",
-        "react-dom": "/dist/react-dom-shim.js"
-      }
+
+    .login-box input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 15px;
+      margin-bottom: 16px;
+      outline: none;
     }
-    </script>
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
-    
-    <!-- Additional SEO -->
-    <meta name="rating" content="general">
-    <meta name="distribution" content="global">
-    <meta name="revisit-after" content="3 days">
-    <meta property="article:published_time" content="2025-01-01T00:00:00Z">
-    <meta property="article:modified_time" content="2025-11-17T00:00:00Z">
+
+    .login-box button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #f87171;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* LOADER */
+    #loader-screen {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #020617, #000);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99998;
+    }
+
+    .loader-box {
+      text-align: center;
+      color: #e5e7eb;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .loader-box h2 {
+      margin-top: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #94a3b8;
+    }
+
+    .spinner {
+      width: 54px;
+      height: 54px;
+      border: 4px solid #1e293b;
+      border-top: 4px solid #22c55e;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* APP ROOT (tu web real) */
+    #root {
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+    }
+  </style>
 </head>
+
 <body>
-    <div id="root" role="main" aria-label="Eaglercraft Game Launcher"></div>
-    
-    <!-- Sección para unirse al servidor de Discord con temática profesional de programadores -->
-    <footer class="discord-section">
-      <h3>Join Our Discord Server</h3>
-      <p>Connect with fellow developers, get support, and discuss Eaglercraft in a professional coding environment.</p>
-      <p><a href="https://discord.gg/WBUXMNpXyq" target="_blank" rel="noopener noreferrer">Join Discord</a></p>
-    </footer>
-    
-    <script>
-      (function(){
-        var API_BASE = (window.EAGLER_API_BASE || '').replace(/\/$/, '');
-        var origFetch = window.fetch.bind(window);
 
-        function tryCandidates(paths, opts) {
-          var p = paths.shift();
-          if (!p) return Promise.reject(new Error('No candidate paths'));
-          return origFetch(p, opts).then(function(resp){
-            if (resp && resp.ok) return resp;
-            return tryCandidates(paths, opts);
-          }).catch(function(){
-            return tryCandidates(paths, opts);
-          });
-        }
+  <!-- LOGIN -->
+  <div id="login-overlay">
+    <div class="login-box">
+      <h1>Restricted Access</h1>
+      <p>Enter access key to continue</p>
 
-        window.fetch = function(input, init){
-          try {
-            var urlStr = typeof input === 'string' ? input : (input && input.url) || '';
+      <input type="password" id="keyInput" placeholder="Access key">
+      <button onclick="unlock()">Unlock</button>
 
-            // Redirect /api/* -> API_BASE + /api/* when an API base is configured
-            if (API_BASE && typeof urlStr === 'string' && urlStr.indexOf('/api/') === 0) {
-              var newUrl = API_BASE + urlStr;
-              if (typeof input === 'string') input = newUrl; else input = new Request(newUrl, input);
-              return origFetch(input, init);
-            }
+      <div class="error" id="error">Invalid access key</div>
+    </div>
+  </div>
 
-            if (typeof urlStr === 'string' && (urlStr === '/dist/site-stats.json' || urlStr === 'dist/site-stats.json' || urlStr === '/site-stats.json')){
-              var candidates = [];
-              if (API_BASE) candidates.push(API_BASE + '/dist/site-stats.json');
-              candidates.push(urlStr);
-              candidates.push('/site-stats.json');
-              candidates.push('/dist/site-stats.json');
-              candidates.push('site-stats.json');
-              candidates.push('dist/site-stats.json');
-              candidates = candidates.filter(function(x,i){return candidates.indexOf(x)===i});
-              return tryCandidates(candidates, init);
-            }
-          } catch (e) {
-            console.debug('fetch-shim error', e);
-          }
-          return origFetch(input, init);
-        };
-      })();
-    </script>
-    <script>
-      (function(){
-        // about:blank startup behavior has been disabled.
-        // The original code was intentionally removed to prevent broken automatic
-        // opening and closing of tabs. Leaving a noop here for compatibility.
-        return;
-      })();
-    </script>
-    <script defer src="dist/renderer.js" crossorigin="anonymous"></script>
-    <script defer src="dist/tracker.js"></script>
+  <!-- LOADER -->
+  <div id="loader-screen">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <h2>Created by Anas &amp; Issa</h2>
+    </div>
+  </div>
 
-    <!-- Optional API base override: set this if API runs on a different origin/port
-         (for example during development or if Apache/cPanel isn't proxying /api to Node).
-         Example: window.EAGLER_API_BASE = 'http://127.0.0.1:8080'; -->
-    <script>
-      // window.EAGLER_API_BASE = 'http://127.0.0.1:8080';
-    </script>
+  <!-- TU APP / JUEGO -->
+  <div id="root">
+    <!-- aquí va tu eaglercraft / react / web -->
+  </div>
 
-    <script>
-      (function(){
-        var banner = 'eaglercraft.dev';
-        try {
-          console.log('%c' + banner, 'font-size:36px; font-weight:700; color: #7c3aed;');
-        } catch (e) {
-          console.log(banner);
-        }
-      })();
-    </script>
-    
-    <noscript>
-      <div style="padding: 40px 20px; text-align: center; font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;">
-        <h1>Eaglercraft - Play Minecraft FREE in Your Browser!</h1>
-        <p style="font-size: 18px; line-height: 1.6; margin: 20px 0;">
-          <strong>JavaScript is required to play Eaglercraft.</strong>
-        </p>
-        <p style="font-size: 16px; line-height: 1.6; color: #666;">
-          Eaglercraft brings the full Minecraft Java Edition experience to your browser with no downloads required. 
-          Play multiple versions (1.8.8, 1.12), join multiplayer servers, and access custom clients - all 100% FREE!
-        </p>
-        <p style="margin-top: 30px; font-size: 16px;">
-          Please enable JavaScript in your browser settings to start playing.
-        </p>
-        <div style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 8px;">
-          <h2>Features:</h2>
-          <ul style="text-align: left; display: inline-block;">
-            <li>No downloads or installation needed</li>
-            <li>100% free to play</li>
-            <li>Multiple Minecraft versions available</li>
-            <li>Multiplayer server support</li>
-            <li>Custom enhanced clients</li>
-            <li>Works on all modern browsers</li>
-          </ul>
-        </div>
-      </div>
-    </noscript>
+  <!-- SCRIPT -->
+  <script>
+    const KEY = "thcteam123";
+
+    function showLoader() {
+      const loader = document.getElementById("loader-screen");
+      loader.style.display = "flex";
+
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        setTimeout(() => loader.remove(), 500);
+      }, 2200);
+    }
+
+    function unlock() {
+      const input = document.getElementById("keyInput").value;
+      const error = document.getElementById("error");
+
+      if (input === KEY) {
+        localStorage.setItem("access_granted", "yes");
+        document.getElementById("login-overlay").remove();
+        showLoader();
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    // Auto login si ya entró una vez
+    if (localStorage.getItem("access_granted") === "yes") {
+      window.addEventListener("load", () => {
+        const login = document.getElementById("login-overlay");
+        if (login) login.remove();
+        showLoader();
+      });
+    }
+  </script>
+
 </body>
 </html>
-
-<!--
- __________________________________________________________
-|                                                          |
-|                                           __             |
-|                                          /_ |            |
-|            __ _  ___ _ __ _   _ _ __   ___| |            |
-|           / _` |/ _ \ '__| | | | '_ \ / _ \ |            |
