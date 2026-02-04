@@ -3,144 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minecraft Launcher - Issa & Anas</title>
-
-<!-- ESTILOS PROFESIONALES -->
+<title>Minecraft Launcher 1.8.8 - Issa & Anas</title>
 <style>
-body {
-  margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(135deg,#0f172a,#020617);
-  color: #e5e7eb;
-  overflow: hidden;
-}
+body { margin:0; font-family:Arial,sans-serif; background:#020617; color:#fff; overflow:hidden; }
+.center { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+#login,#loader,#game-container { gap:16px; text-align:center; }
+#login { display:flex; flex-direction:column; background:rgba(15,23,42,0.95); padding:40px; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.6); }
+#login input { padding:12px; border-radius:8px; border:none; outline:none; width:200px; font-size:14px; margin-bottom:12px; }
+#login button { padding:14px; border:none; border-radius:12px; font-weight:600; font-size:16px; background:linear-gradient(135deg,#22c55e,#16a34a); cursor:pointer; }
+#loader { display:none; flex-direction:column; align-items:center; }
+.loader-spinner { width:60px; height:60px; border:5px solid #1e293b; border-top:5px solid #22c55e; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:12px; }
+#game-container { display:none; width:100vw; height:100vh; position:relative; }
+#error { color:#f87171; display:none; margin-top:8px; }
+footer { position:fixed; bottom:16px; font-size:14px; color:#94a3b8; text-align:center; width:100%; }
 
-/* Centrado general */
-.center {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* LOGIN PROFESIONAL */
-#login {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: rgba(15,23,42,0.95);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.6);
-  text-align: center;
-  animation: fadeIn 1s ease;
-}
-
-#login h2 {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-
-#login input {
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #e5e7eb;
-  font-size: 16px;
-  outline: none;
-}
-
-#login button {
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  font-size: 16px;
-  background: linear-gradient(135deg,#22c55e,#16a34a);
-  cursor: pointer;
-  transition: transform .2s;
-}
-#login button:hover { transform: scale(1.05); }
-
-/* ERROR */
-#error {
-  color: #f87171;
-  font-size: 14px;
-  display: none;
-}
-
-/* LOADER */
-#loader {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.loader-spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid #1e293b;
-  border-top: 5px solid #22c55e;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* SELECTOR DE VERSIONES */
-#selector {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  animation: fadeIn 0.8s ease;
-}
-
-#selector h1 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.versions {
-  display: flex;
-  gap: 16px;
-}
-
-.versions button {
-  padding: 16px 28px;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  background: linear-gradient(135deg,#22c55e,#16a34a);
-  transition: transform .2s;
-}
-.versions button:hover { transform: scale(1.05); }
-
-footer {
-  margin-top: 30px;
-  font-size: 14px;
-  color: #94a3b8;
-}
-
-/* GAME IFRAME */
-#game {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* ANIMACIONES */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+@keyframes spin { to { transform:rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -159,25 +36,17 @@ footer {
   <h2>Created by Anas & Issa</h2>
 </div>
 
-<!-- SELECTOR -->
-<div id="selector" class="center">
-  <h1>Select Minecraft Version</h1>
-  <div class="versions">
-    <button onclick="loadGame('1.8.8')">1.8.8 Offline</button>
-    <button onclick="loadGame('1.12.2')">1.12.2 Offline</button>
-    <button onclick="loadGameOnline()">Online</button>
-  </div>
-  <footer>Dedicado y hecho con mucho esfuerzo por parte de Issa y Anas</footer>
-</div>
+<!-- JUEGO -->
+<div id="game-container" class="center"></div>
 
-<!-- CONTENEDOR DEL JUEGO -->
-<div id="game"></div>
+<footer>Dedicado y hecho con mucho esfuerzo por parte de Issa y Anas</footer>
 
 <script>
+// Key
 const KEY = "thcteam123";
 
-// LOGIN
-function unlock() {
+// Login
+function unlock(){
   const input = document.getElementById("key").value;
   const error = document.getElementById("error");
   if(input === KEY){
@@ -186,31 +55,34 @@ function unlock() {
     document.getElementById("loader").style.display="flex";
     setTimeout(()=>{
       document.getElementById("loader").style.display="none";
-      document.getElementById("selector").style.display="flex";
-    },2000);
+      loadGame();
+    },1500);
   } else {
     error.style.display="block";
   }
 }
 
-// AUTO LOGIN
+// Auto login
 if(localStorage.getItem("access_granted")) unlock();
 
-// CARGAR EAGLERCRAFT OFFLINE
-function loadGame(version){
-  document.getElementById("selector").style.display="none";
-  const g = document.getElementById("game");
-  g.style.display="block";
-  g.innerHTML = `<iframe src="./mc/${version}/index.html" style="width:100vw;height:100vh;border:none;"></iframe>`;
-}
+// Cargar Eaglercraft inline
+function loadGame(){
+  const container = document.getElementById("game-container");
+  container.style.display="block";
 
-// CARGAR EAGLERCRAFT ONLINE
-function loadGameOnline(){
-  document.getElementById("selector").style.display="none";
-  const g = document.getElementById("game");
-  g.style.display="block";
-  // Cambia la URL a tu servidor online
-  g.innerHTML = `<iframe src="./mc/online/index.html" style="width:100vw;height:100vh;border:none;"></iframe>`;
+  // AQUÍ PEGA EL CONTENIDO DE tu EaglercraftX_1.8_u49_Offline_Signed.html
+  // Lo que va entre <body> de ese archivo se pone aquí
+  container.innerHTML = `
+    <!-- BEGIN EAGLERCRAFT -->
+    <canvas id="gameCanvas" style="width:100%;height:100%;display:block;"></canvas>
+    <script>
+    // --- Aquí va todo el JS de classes.js y eaglercraft.js ---
+    // Por ejemplo:
+    console.log("Eaglercraft loaded!"); 
+    // NOTA: Debes pegar aquí las funciones de Eaglercraft
+    </script>
+    <!-- END EAGLERCRAFT -->
+  `;
 }
 </script>
 </body>
