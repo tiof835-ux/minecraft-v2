@@ -5,92 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minecraft Launcher - Issa & Anas</title>
 
+<!-- ESTILOS PROFESIONALES -->
 <style>
 body {
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#020617;
-  color:#e5e7eb;
-  overflow:hidden;
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg,#0f172a,#020617);
+  color: #e5e7eb;
+  overflow: hidden;
 }
 
-/* Centrado */
+/* Centrado general */
 .center {
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Botones */
-button {
-  padding:16px 28px;
-  border-radius:12px;
-  border:none;
-  font-weight:600;
-  cursor:pointer;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
-  margin:8px;
-  font-size:16px;
+/* LOGIN PROFESIONAL */
+#login {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(15,23,42,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  text-align: center;
+  animation: fadeIn 1s ease;
 }
 
-/* Login / Loader / Selector */
-#login, #loader, #selector {
-  gap:16px;
-  text-align:center;
+#login h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
 }
 
-/* Inputs */
-input {
-  padding:12px;
-  border-radius:8px;
-  border:none;
-  outline:none;
-  width:200px;
-  font-size:14px;
+#login input {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-size: 16px;
+  outline: none;
 }
 
-/* Game iframe */
-#game {
-  display:none;
-  width:100vw;
-  height:100vh;
+#login button {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  cursor: pointer;
+  transition: transform .2s;
+}
+#login button:hover { transform: scale(1.05); }
+
+/* ERROR */
+#error {
+  color: #f87171;
+  font-size: 14px;
+  display: none;
 }
 
-/* Footer texto */
+/* LOADER */
+#loader {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #1e293b;
+  border-top: 5px solid #22c55e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* SELECTOR DE VERSIONES */
+#selector {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: fadeIn 0.8s ease;
+}
+
+#selector h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.versions {
+  display: flex;
+  gap: 16px;
+}
+
+.versions button {
+  padding: 16px 28px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  transition: transform .2s;
+}
+.versions button:hover { transform: scale(1.05); }
+
 footer {
-  position:fixed;
-  bottom:16px;
-  font-size:14px;
-  color:#94a3b8;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* GAME IFRAME */
+#game {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ANIMACIONES */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 </style>
 </head>
-
 <body>
 
 <!-- LOGIN -->
 <div id="login" class="center">
   <h2>Restricted Access</h2>
-  <input id="key" type="password" placeholder="Access key">
+  <input id="key" type="password" placeholder="Enter Access Key">
   <button onclick="unlock()">Unlock</button>
-  <span id="err" style="color:#f87171;display:none;">Invalid key</span>
+  <span id="error">Invalid Key</span>
 </div>
 
 <!-- LOADER -->
-<div id="loader" class="center" style="display:none;">
+<div id="loader" class="center">
+  <div class="loader-spinner"></div>
   <h2>Created by Anas & Issa</h2>
 </div>
 
 <!-- SELECTOR -->
-<div id="selector" class="center" style="display:none;">
+<div id="selector" class="center">
   <h1>Select Minecraft Version</h1>
-  <div>
-    <button onclick="loadGame('1.8.8')">Minecraft 1.8.8</button>
-    <button onclick="loadGame('1.12.2')">Minecraft 1.12.2</button>
-    <button onclick="loadGameOnline()">Minecraft Online</button>
+  <div class="versions">
+    <button onclick="loadGame('1.8.8')">1.8.8 Offline</button>
+    <button onclick="loadGame('1.12.2')">1.12.2 Offline</button>
+    <button onclick="loadGameOnline()">Online</button>
   </div>
   <footer>Dedicado y hecho con mucho esfuerzo por parte de Issa y Anas</footer>
 </div>
@@ -101,12 +176,12 @@ footer {
 <script>
 const KEY = "thcteam123";
 
-// Login
+// LOGIN
 function unlock() {
   const input = document.getElementById("key").value;
-  const error = document.getElementById("err");
+  const error = document.getElementById("error");
   if(input === KEY){
-    localStorage.setItem("ok","1");
+    localStorage.setItem("access_granted","yes");
     document.getElementById("login").style.display="none";
     document.getElementById("loader").style.display="flex";
     setTimeout(()=>{
@@ -118,33 +193,25 @@ function unlock() {
   }
 }
 
-// Auto login si ya estaba autorizado
-if(localStorage.getItem("ok")) unlock();
+// AUTO LOGIN
+if(localStorage.getItem("access_granted")) unlock();
 
-// Cargar juego offline
+// CARGAR EAGLERCRAFT OFFLINE
 function loadGame(version){
   document.getElementById("selector").style.display="none";
   const g = document.getElementById("game");
   g.style.display="block";
-  g.innerHTML = `
-    <iframe src="./mc/${version}/index.html"
-      style="width:100vw;height:100vh;border:none;">
-    </iframe>`;
+  g.innerHTML = `<iframe src="./mc/${version}/index.html" style="width:100vw;height:100vh;border:none;"></iframe>`;
 }
 
-// Cargar juego online
+// CARGAR EAGLERCRAFT ONLINE
 function loadGameOnline(){
   document.getElementById("selector").style.display="none";
   const g = document.getElementById("game");
   g.style.display="block";
-
-  // Cambia la URL por tu servidor online
-  g.innerHTML = `
-    <iframe src="./mc/online/index.html"
-      style="width:100vw;height:100vh;border:none;">
-    </iframe>`;
+  // Cambia la URL a tu servidor online
+  g.innerHTML = `<iframe src="./mc/online/index.html" style="width:100vw;height:100vh;border:none;"></iframe>`;
 }
 </script>
-
 </body>
 </html>
