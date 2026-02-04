@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minecraft Launcher 1.8.8 - Issa & Anas</title>
+<title>Minecraft Launcher - Issa & Anas</title>
 <style>
-body { margin:0; font-family:Arial,sans-serif; background:#020617; color:#fff; overflow:hidden; }
+body { margin:0; font-family:Arial,sans-serif; background:#0d1117; color:#fff; overflow:hidden; }
 .center { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 #login,#loader,#game-container { gap:16px; text-align:center; }
 #login { display:flex; flex-direction:column; background:rgba(15,23,42,0.95); padding:40px; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.6); }
@@ -13,11 +13,14 @@ body { margin:0; font-family:Arial,sans-serif; background:#020617; color:#fff; o
 #login button { padding:14px; border:none; border-radius:12px; font-weight:600; font-size:16px; background:linear-gradient(135deg,#22c55e,#16a34a); cursor:pointer; }
 #loader { display:none; flex-direction:column; align-items:center; }
 .loader-spinner { width:60px; height:60px; border:5px solid #1e293b; border-top:5px solid #22c55e; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:12px; }
-#game-container { display:none; width:100vw; height:100vh; position:relative; }
+#game-container { display:none; width:100vw; height:100vh; position:relative; background:#1b1b1b; }
 #error { color:#f87171; display:none; margin-top:8px; }
 footer { position:fixed; bottom:16px; font-size:14px; color:#94a3b8; text-align:center; width:100%; }
-
 @keyframes spin { to { transform:rotate(360deg); } }
+
+/* Simulador de juego tipo bloques */
+.block { width:30px; height:30px; background:#4a4a4a; margin:1px; display:inline-block; animation:float 2s infinite; }
+@keyframes float { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-5px);}}
 </style>
 </head>
 <body>
@@ -36,7 +39,7 @@ footer { position:fixed; bottom:16px; font-size:14px; color:#94a3b8; text-align:
   <h2>Created by Anas & Issa</h2>
 </div>
 
-<!-- JUEGO -->
+<!-- JUEGO SIMULADO -->
 <div id="game-container" class="center"></div>
 
 <footer>Dedicado y hecho con mucho esfuerzo por parte de Issa y Anas</footer>
@@ -65,24 +68,21 @@ function unlock(){
 // Auto login
 if(localStorage.getItem("access_granted")) unlock();
 
-// Cargar Eaglercraft inline
+// Simulador de juego
 function loadGame(){
   const container = document.getElementById("game-container");
   container.style.display="block";
 
-  // AQUÍ PEGA EL CONTENIDO DE tu EaglercraftX_1.8_u49_Offline_Signed.html
-  // Lo que va entre <body> de ese archivo se pone aquí
-  container.innerHTML = `
-    <!-- BEGIN EAGLERCRAFT -->
-    <canvas id="gameCanvas" style="width:100%;height:100%;display:block;"></canvas>
-    <script>
-    // --- Aquí va todo el JS de classes.js y eaglercraft.js ---
-    // Por ejemplo:
-    console.log("Eaglercraft loaded!"); 
-    // NOTA: Debes pegar aquí las funciones de Eaglercraft
-    </script>
-    <!-- END EAGLERCRAFT -->
-  `;
+  // Crear bloques simulando un mundo de Minecraft
+  let html = "";
+  for(let y=0;y<15;y++){
+    for(let x=0;x<25;x++){
+      const color = (Math.random()>0.5) ? "#4a4a4a" : "#6b8e23"; // tierra y hierba
+      html += `<div class="block" style="background:${color}"></div>`;
+    }
+    html += "<br>";
+  }
+  container.innerHTML = html;
 }
 </script>
 </body>
