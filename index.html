@@ -1,198 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minecraft Online | Private Access</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft Launcher - Issa & Anas</title>
 
-  <!-- Styles -->
-  <style>
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #0f172a;
-      overflow: hidden;
-    }
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  overflow:hidden;
+}
 
-    /* LOGIN */
-    #login-overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, #1e293b, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-    }
+/* Centrado */
+.center {
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
 
-    .login-box {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: 14px;
-      padding: 36px;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.6);
-      text-align: center;
-    }
+/* Botones */
+button {
+  padding:16px 28px;
+  border-radius:12px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  margin:8px;
+  font-size:16px;
+}
 
-    .login-box h1 {
-      color: #e5e7eb;
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
+/* Login / Loader / Selector */
+#login, #loader, #selector {
+  gap:16px;
+  text-align:center;
+}
 
-    .login-box p {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
+/* Inputs */
+input {
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  width:200px;
+  font-size:14px;
+}
 
-    .login-box input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid #334155;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 15px;
-      margin-bottom: 16px;
-      outline: none;
-    }
+/* Game iframe */
+#game {
+  display:none;
+  width:100vw;
+  height:100vh;
+}
 
-    .login-box button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .error {
-      color: #f87171;
-      font-size: 13px;
-      margin-top: 12px;
-      display: none;
-    }
-
-    /* LOADER */
-    #loader-screen {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, #020617, #000);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 99998;
-    }
-
-    .loader-box {
-      text-align: center;
-      color: #e5e7eb;
-      animation: fadeIn 0.8s ease;
-    }
-
-    .loader-box h2 {
-      margin-top: 18px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: #94a3b8;
-    }
-
-    .spinner {
-      width: 54px;
-      height: 54px;
-      border: 4px solid #1e293b;
-      border-top: 4px solid #22c55e;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    /* APP ROOT (tu web real) */
-    #root {
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-    }
-  </style>
+/* Footer texto */
+footer {
+  position:fixed;
+  bottom:16px;
+  font-size:14px;
+  color:#94a3b8;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- LOGIN -->
-  <div id="login-overlay">
-    <div class="login-box">
-      <h1>Restricted Access</h1>
-      <p>Enter access key to continue</p>
+<!-- LOGIN -->
+<div id="login" class="center">
+  <h2>Restricted Access</h2>
+  <input id="key" type="password" placeholder="Access key">
+  <button onclick="unlock()">Unlock</button>
+  <span id="err" style="color:#f87171;display:none;">Invalid key</span>
+</div>
 
-      <input type="password" id="keyInput" placeholder="Access key">
-      <button onclick="unlock()">Unlock</button>
+<!-- LOADER -->
+<div id="loader" class="center" style="display:none;">
+  <h2>Created by Anas & Issa</h2>
+</div>
 
-      <div class="error" id="error">Invalid access key</div>
-    </div>
+<!-- SELECTOR -->
+<div id="selector" class="center" style="display:none;">
+  <h1>Select Minecraft Version</h1>
+  <div>
+    <button onclick="loadGame('1.8.8')">Minecraft 1.8.8</button>
+    <button onclick="loadGame('1.12.2')">Minecraft 1.12.2</button>
+    <button onclick="loadGameOnline()">Minecraft Online</button>
   </div>
+  <footer>Dedicado y hecho con mucho esfuerzo por parte de Issa y Anas</footer>
+</div>
 
-  <!-- LOADER -->
-  <div id="loader-screen">
-    <div class="loader-box">
-      <div class="spinner"></div>
-      <h2>Created by Anas &amp; Issa</h2>
-    </div>
-  </div>
+<!-- CONTENEDOR DEL JUEGO -->
+<div id="game"></div>
 
-  <!-- TU APP / JUEGO -->
-  <div id="root">
-    <!-- aquí va tu eaglercraft / react / web -->
-  </div>
+<script>
+const KEY = "thcteam123";
 
-  <!-- SCRIPT -->
-  <script>
-    const KEY = "thcteam123";
+// Login
+function unlock() {
+  const input = document.getElementById("key").value;
+  const error = document.getElementById("err");
+  if(input === KEY){
+    localStorage.setItem("ok","1");
+    document.getElementById("login").style.display="none";
+    document.getElementById("loader").style.display="flex";
+    setTimeout(()=>{
+      document.getElementById("loader").style.display="none";
+      document.getElementById("selector").style.display="flex";
+    },2000);
+  } else {
+    error.style.display="block";
+  }
+}
 
-    function showLoader() {
-      const loader = document.getElementById("loader-screen");
-      loader.style.display = "flex";
+// Auto login si ya estaba autorizado
+if(localStorage.getItem("ok")) unlock();
 
-      setTimeout(() => {
-        loader.style.opacity = "0";
-        setTimeout(() => loader.remove(), 500);
-      }, 2200);
-    }
+// Cargar juego offline
+function loadGame(version){
+  document.getElementById("selector").style.display="none";
+  const g = document.getElementById("game");
+  g.style.display="block";
+  g.innerHTML = `
+    <iframe src="./mc/${version}/index.html"
+      style="width:100vw;height:100vh;border:none;">
+    </iframe>`;
+}
 
-    function unlock() {
-      const input = document.getElementById("keyInput").value;
-      const error = document.getElementById("error");
+// Cargar juego online
+function loadGameOnline(){
+  document.getElementById("selector").style.display="none";
+  const g = document.getElementById("game");
+  g.style.display="block";
 
-      if (input === KEY) {
-        localStorage.setItem("access_granted", "yes");
-        document.getElementById("login-overlay").remove();
-        showLoader();
-      } else {
-        error.style.display = "block";
-      }
-    }
-
-    // Auto login si ya entró una vez
-    if (localStorage.getItem("access_granted") === "yes") {
-      window.addEventListener("load", () => {
-        const login = document.getElementById("login-overlay");
-        if (login) login.remove();
-        showLoader();
-      });
-    }
-  </script>
+  // Cambia la URL por tu servidor online
+  g.innerHTML = `
+    <iframe src="./mc/online/index.html"
+      style="width:100vw;height:100vh;border:none;">
+    </iframe>`;
+}
+</script>
 
 </body>
 </html>
